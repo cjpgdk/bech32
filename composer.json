@@ -1,0 +1,47 @@
+{
+    "name": "cjpgdk/bech32",
+    "description": "bech32 encode / decode",
+    "homepage": "https://github.com/bech32",
+    "license": "MIT",
+    "keywords": ["bech32", "encode", "decode"
+    ],
+    "authors": [
+        {
+            "name": "Christian M. Jensen",
+            "email": "cmj@cjpg.dk",
+            "homepage": "https://cjpg.dk"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "code-lts/doctum": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bech32\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Test\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "analyse": "phpstan analyse",
+        "check-style": "phpcs -p --standard=PSR12 src tests",
+        "fix-style": "phpcbf -p --standard=PSR12 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "prefer-stable": true
+}
