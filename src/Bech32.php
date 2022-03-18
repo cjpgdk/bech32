@@ -201,7 +201,7 @@ class Bech32
         string $data,
         string $hrp,
         int $witnessVersion,
-        ?string $output
+        ?string &$output
     ): bool {
         // check witness verison.
         if ($witnessVersion < 0 ||  $witnessVersion > 16) {
