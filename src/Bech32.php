@@ -193,7 +193,7 @@ class Bech32
      * @param string $hrp human readable part (prefix).
      * @param int $witnessVersion The witness version valid version are
      *                            0 ... 16 inclusive
-     * @param string|null $output The encoded output (Binary string!)..
+     * @param string|null $output The encoded output.
      * @return bool
      * @throws InvalidArgumentException
      */
