@@ -1,10 +1,9 @@
 {
     "name": "cjpgdk/bech32",
     "description": "bech32 encode / decode",
-    "homepage": "https://github.com/bech32",
+    "homepage": "https://github.com/cjpgdk/bech32",
     "license": "MIT",
-    "keywords": ["bech32", "encode", "decode"
-    ],
+    "keywords": ["bech32", "encode", "decode"],
     "authors": [
         {
             "name": "Christian M. Jensen",
@@ -22,7 +21,10 @@
     "autoload": {
         "psr-4": {
             "Bech32\\": "src/"
-        }
+        },
+        "files": [
+            "src/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

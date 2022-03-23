@@ -247,7 +247,6 @@ class Bech32
         return !empty($output);
     }
 
-
     /**
      * Encode a Bech32 or Bech32m string
      *
