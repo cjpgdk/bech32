@@ -45,7 +45,7 @@ if (!function_exists('segwit_addr_encode')) {
         string $data,
         string $hrp,
         int $witVer,
-        ?string &$output
+        ?string &$output,
     ): bool {
         return \Bech32\Bech32::encodeSegWit($data, $hrp, $witVer, $output);
     }
@@ -57,17 +57,17 @@ if (!function_exists('segwit_addr_decode')) {
      *
      * @param string $input
      * @param string|null $output [Output] The decoded output (Binary string!).
-     * @param int $witVer [Optional] [Output] The decode witness version.
-     * @param string $hpr [Optional] [Output] The decoded human readable part
+     * @param int|null $witVer [Optional] [Output] The decode witness version.
+     * @param string|null $hpr [Optional] [Output] The decoded human readable part
      * @param \Bech32\Bech32Encoding|null $enc [Optional] [Output] The decoded encoding type.
      * @return bool
      */
     function segwit_addr_decode(
         string $input,
         ?string &$output,
-        int &$witVer = -1,
-        string &$hpr = "",
-        ?\Bech32\Bech32Encoding &$enc = null
+        ?int &$witVer = null,
+        ?string &$hpr = null,
+        ?\Bech32\Bech32Encoding &$enc = null,
     ): bool {
         return \Bech32\Bech32::decodeSegWit(
             $input,
@@ -91,7 +91,7 @@ if (!function_exists('bech32_encode')) {
     function bech32_encode(
         array $data,
         string $hrp,
-        \Bech32\Bech32Encoding $enc
+        \Bech32\Bech32Encoding $enc,
     ): ?string {
         return \Bech32\Bech32::encode($data, $hrp, $enc);
     }
@@ -102,14 +102,14 @@ if (!function_exists('bech32_decode')) {
      * Decode a Bech32 or Bech32m string
      *
      * @param string $input The data to decode.
-     * @param string $hpr [Output] Outputs the human readable part.
-     * @param \Bech32\Bech32Encoding $enc [Output] Outputs the encoding used.
+     * @param string|null $hpr [Output] Outputs the human readable part.
+     * @param \Bech32\Bech32Encoding|null $enc [Output] Outputs the encoding used.
      * @return array<int>|null Returns the decoded data if successful, null otherwise
      */
     function bech32_decode(
         string $input,
-        string &$hpr = "",
-        \Bech32\Bech32Encoding &$enc = null
+        ?string &$hpr = null,
+        ?\Bech32\Bech32Encoding &$enc,
     ): ?array {
         return \Bech32\Bech32::decode($input, $hpr, $enc);
     }

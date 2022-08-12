@@ -30,17 +30,17 @@ class Bech32
      *
      * @param string $input
      * @param string|null $output The decoded output (Binary string!).
-     * @param int $witnessVersion The decode witness version.
-     * @param string $hpr The decoded human readable part
-     * @param Bech32Encoding $enc The decoded encoding type.
+     * @param int|null $witnessVersion The decode witness version.
+     * @param string|null $hpr The decoded human readable part
+     * @param Bech32Encoding|null $enc The decoded encoding type.
      * @return bool
      */
     public static function decodeSegWit(
         string $input,
         ?string &$output,
-        int &$witnessVersion = -1,
-        string &$hpr = "",
-        Bech32Encoding &$enc = null
+        ?int &$witnessVersion = null,
+        ?string &$hpr = null,
+        ?Bech32Encoding &$enc = null,
     ): bool {
         $data = Bech32::decode($input, $hpr, $enc);
 
@@ -78,12 +78,15 @@ class Bech32
      * Decode a Bech32 or Bech32m string
      *
      * @param string $input The data to decode.
-     * @param string $hpr Outputs the human readable part.
-     * @param Bech32Encoding $enc Outputs the encoding used.
+     * @param string|null $hpr Outputs the human readable part.
+     * @param Bech32Encoding|null $enc Outputs the encoding used.
      * @return array<int>|null
      */
-    public static function decode(string $input, string &$hpr = "", Bech32Encoding &$enc = null): ?array
-    {
+    public static function decode(
+        string $input,
+        ?string &$hpr = null,
+        ?Bech32Encoding &$enc = null,
+    ): ?array {
         $inputLen = strlen($input);
         if ($inputLen < 8 || $inputLen > 90) {
             $enc = Bech32Encoding::NONE;
@@ -201,7 +204,7 @@ class Bech32
         string $data,
         string $hrp,
         int $witnessVersion,
-        ?string &$output
+        ?string &$output,
     ): bool {
         // check witness verison.
         if ($witnessVersion < 0 ||  $witnessVersion > 16) {
